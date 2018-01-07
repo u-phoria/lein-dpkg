@@ -77,7 +77,7 @@
       (when (.exists (file script))
         (print (:out (sh! script)))
         (flush)))
-    (sh! "fakeroot" "dpkg-deb" "--build" (deb-target-dir project))))
+    (sh! "fakeroot" "dpkg-deb" "-Zgzip" "--build" (deb-target-dir project))))
 
 (defn rename-package
   "Rename the \"debian.deb\" file in the target directory to the same
